@@ -1,0 +1,74 @@
+[2026-03-29 14:09:00] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:09:00] username='bob'           password='wrongpass'          status=FAILED
+[2026-03-29 14:09:00] username='charlie'       password='ch4rlie_rocks'      status=SUCCESS
+[2026-03-29 14:09:00] username='diana'         password='badpassword'        status=FAILED
+[2026-03-29 14:09:00] username='alice'         password='wrongagain'         status=FAILED
+[2026-03-29 14:09:00] username='alice'         password='lastchance'         status=FAILED
+[2026-03-29 14:09:00] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:09:00] username='(empty)'       password='emptyuser'          status=INVALID FORMAT
+[2026-03-29 14:09:00] username='frank'         password='(empty)'            status=INVALID FORMAT
+[2026-03-29 14:09:00] username='unknown'       password='ghost'              status=FAILED
+[2026-03-29 14:35:48] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:35:48] username='bob'           password='wrongpass'          status=FAILED
+[2026-03-29 14:35:48] username='charlie'       password='ch4rlie_rocks'      status=SUCCESS
+[2026-03-29 14:35:48] username='diana'         password='badpassword'        status=FAILED
+[2026-03-29 14:35:48] username='alice'         password='wrongagain'         status=FAILED
+[2026-03-29 14:35:48] username='alice'         password='lastchance'         status=FAILED
+[2026-03-29 14:35:48] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:35:48] username='(empty)'       password='emptyuser'          status=INVALID FORMAT
+[2026-03-29 14:35:48] username='frank'         password='(empty)'            status=INVALID FORMAT
+[2026-03-29 14:35:48] username='unknown'       password='ghost'              status=FAILED
+[2026-03-29 14:36:55] username='bob'           password='wrongpass'          status=FAILED
+[2026-03-29 14:36:55] username='diana'         password='badpassword'        status=FAILED
+[2026-03-29 14:36:55] username='alice'         password='wrongagain'         status=FAILED
+[2026-03-29 14:36:55] username='alice'         password='lastchance'         status=FAILED
+[2026-03-29 14:38:12] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:38:12] username='bob'           password='wrongpass'          status=FAILED
+[2026-03-29 14:38:12] username='charlie'       password='ch4rlie_rocks'      status=SUCCESS
+[2026-03-29 14:38:12] username='diana'         password='badpassword'        status=FAILED
+[2026-03-29 14:38:12] username='alice'         password='wrongagain'         status=FAILED
+[2026-03-29 14:38:12] username='alice'         password='lastchance'         status=FAILED
+[2026-03-29 14:38:12] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:38:12] username='(empty)'       password='emptyuser'          status=INVALID FORMAT
+[2026-03-29 14:38:12] username='frank'         password='(empty)'            status=INVALID FORMAT
+[2026-03-29 14:38:12] username='unknown'       password='ghost'              status=FAILED
+[2026-03-29 14:38:24] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:38:24] username='bob'           password='wrongpass'          status=FAILED
+[2026-03-29 14:38:24] username='charlie'       password='ch4rlie_rocks'      status=SUCCESS
+[2026-03-29 14:38:24] username='diana'         password='badpassword'        status=FAILED
+[2026-03-29 14:38:24] username='alice'         password='wrongagain'         status=FAILED
+[2026-03-29 14:38:24] username='alice'         password='lastchance'         status=FAILED
+[2026-03-29 14:38:24] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:38:24] username='(empty)'       password='emptyuser'          status=INVALID FORMAT
+[2026-03-29 14:38:24] username='frank'         password='(empty)'            status=INVALID FORMAT
+[2026-03-29 14:38:24] username='unknown'       password='ghost'              status=FAILED
+[2026-03-29 14:38:26] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:38:26] username='bob'           password='wrongpass'          status=FAILED
+[2026-03-29 14:38:26] username='charlie'       password='ch4rlie_rocks'      status=SUCCESS
+[2026-03-29 14:38:26] username='diana'         password='badpassword'        status=FAILED
+[2026-03-29 14:38:26] username='alice'         password='wrongagain'         status=FAILED
+[2026-03-29 14:38:26] username='alice'         password='lastchance'         status=FAILED
+[2026-03-29 14:38:26] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:38:26] username='(empty)'       password='emptyuser'          status=INVALID FORMAT
+[2026-03-29 14:38:26] username='frank'         password='(empty)'            status=INVALID FORMAT
+[2026-03-29 14:38:26] username='unknown'       password='ghost'              status=FAILED
+[2026-03-29 14:38:27] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:38:27] username='bob'           password='wrongpass'          status=FAILED
+[2026-03-29 14:38:27] username='charlie'       password='ch4rlie_rocks'      status=SUCCESS
+[2026-03-29 14:38:27] username='diana'         password='badpassword'        status=FAILED
+[2026-03-29 14:38:27] username='alice'         password='wrongagain'         status=FAILED
+[2026-03-29 14:38:27] username='alice'         password='lastchance'         status=FAILED
+[2026-03-29 14:38:27] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:38:27] username='(empty)'       password='emptyuser'          status=INVALID FORMAT
+[2026-03-29 14:38:27] username='frank'         password='(empty)'            status=INVALID FORMAT
+[2026-03-29 14:38:27] username='unknown'       password='ghost'              status=FAILED
+[2026-03-29 14:38:28] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:38:28] username='bob'           password='wrongpass'          status=FAILED
+[2026-03-29 14:38:28] username='charlie'       password='ch4rlie_rocks'      status=SUCCESS
+[2026-03-29 14:38:28] username='diana'         password='badpassword'        status=FAILED
+[2026-03-29 14:38:28] username='alice'         password='wrongagain'         status=FAILED
+[2026-03-29 14:38:28] username='alice'         password='lastchance'         status=FAILED
+[2026-03-29 14:38:28] username='alice'         password='password123'        status=SUCCESS
+[2026-03-29 14:38:28] username='(empty)'       password='emptyuser'          status=INVALID FORMAT
+[2026-03-29 14:38:28] username='frank'         password='(empty)'            status=INVALID FORMAT
+[2026-03-29 14:38:28] username='unknown'       password='ghost'              status=FAILED

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credential Stuffing Simulator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="20" height="20" rx="3" stroke="black" stroke-width="1.4"/>
+          <circle cx="11" cy="9" r="3" stroke="black" stroke-width="1.4"/>
+          <path d="M6 18c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="black" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span>CSS · Credential Stuffing Simulator</span>
+      </div>
+      <div class="meta">
+        <span>Jejo J</span>
+        <span class="sep">|</span>
+        <span>727823tucy019</span>
+        <span class="sep">|</span>
+        <span>Academic Simulation</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Credential Stuffing Simulator</h1>
+      <p class="subtitle">
+        A controlled academic simulation. No real systems are targeted.
+        Enter <code>username,password</code> pairs (one per line) and run the simulation.
+      </p>
+    </section>
+
+    <div class="panel-row">
+      <!-- INPUT PANEL -->
+      <section class="panel input-panel">
+        <div class="panel-header">
+          <span class="panel-label">INPUT</span>
+          <span class="panel-hint">username,password — one per line</span>
+        </div>
+        <textarea id="credInput" spellcheck="false" placeholder="alice,password123&#10;bob,wrongpass&#10;charlie,ch4rlie_rocks&#10;diana,badpassword&#10;alice,wrongagain&#10;alice,lastchance"></textarea>
+        <div class="btn-row">
+          <button id="runBtn" onclick="runSimulation()">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 2l9 5-9 5V2z" fill="black"/></svg>
+            Run Simulation
+          </button>
+          <button class="btn-secondary" onclick="loadSample()">Load Sample</button>
+          <button class="btn-secondary" onclick="clearAll()">Clear</button>
+        </div>
+      </section>
+
+      <!-- INFO PANEL -->
+      <aside class="info-panel">
+        <div class="panel-header">
+          <span class="panel-label">USER DATABASE</span>
+        </div>
+        <div class="db-list">
+          <div class="db-row"><span>alice</span><span class="pwd-hint">password123</span></div>
+          <div class="db-row"><span>bob</span><span class="pwd-hint">securepass!</span></div>
+          <div class="db-row"><span>charlie</span><span class="pwd-hint">ch4rlie_rocks</span></div>
+          <div class="db-row"><span>diana</span><span class="pwd-hint">D1@naSecure</span></div>
+          <div class="db-row"><span>eve</span><span class="pwd-hint">ev3pass</span></div>
+          <div class="db-row"><span>frank</span><span class="pwd-hint">frank2026</span></div>
+          <div class="db-row"><span>grace</span><span class="pwd-hint">Gr@ce_safe</span></div>
+          <div class="db-row"><span>henry</span><span class="pwd-hint">henry_pass99</span></div>
+        </div>
+        <div class="lock-notice">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2" y="5" width="8" height="6" rx="1" stroke="black" stroke-width="1.2"/><path d="M4 5V3.5a2 2 0 014 0V5" stroke="black" stroke-width="1.2"/></svg>
+          Account locks after <strong>3 failed</strong> attempts.
+        </div>
+      </aside>
+    </div>
+
+    <!-- OUTPUT -->
+    <section class="output-section" id="outputSection" style="display:none">
+      <div class="panel-header">
+        <span class="panel-label">RESULTS</span>
+        <span id="outputMeta" class="panel-hint"></span>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="stats-bar" id="statsBar"></div>
+
+      <!-- Table -->
+      <div class="table-wrap">
+        <table id="resultsTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div id="errorMsg" class="error-msg" style="display:none"></div>
+    <div id="loadingMsg" class="loading-msg" style="display:none">Running simulation…</div>
+  </main>
+
+  <footer>
+    <span>SKCT · Sri Krishna College of Technology · Academic Use Only · 2026</span>
+  </footer>
+
+  <script>
+    const SAMPLE = `alice,password123
+bob,wrongpass
+charlie,ch4rlie_rocks
+diana,badpassword
+alice,wrongagain
+alice,lastchance
+alice,password123
+,emptyuser
+frank,
+unknown,ghost`;
+
+    function loadSample() {
+      document.getElementById("credInput").value = SAMPLE;
+    }
+
+    function clearAll() {
+      document.getElementById("credInput").value = "";
+      document.getElementById("outputSection").style.display = "none";
+      document.getElementById("errorMsg").style.display = "none";
+    }
+
+    async function runSimulation() {
+      const raw = document.getElementById("credInput").value.trim();
+      if (!raw) { showError("Please enter at least one credential pair."); return; }
+
+      document.getElementById("loadingMsg").style.display = "block";
+      document.getElementById("outputSection").style.display = "none";
+      document.getElementById("errorMsg").style.display = "none";
+      document.getElementById("runBtn").disabled = true;
+
+      try {
+        const resp = await fetch("/simulate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ credentials: raw }),
+        });
+        const data = await resp.json();
+
+        if (data.error) { showError(data.error); return; }
+
+        renderResults(data);
+      } catch (e) {
+        showError("Network error: " + e.message);
+      } finally {
+        document.getElementById("loadingMsg").style.display = "none";
+        document.getElementById("runBtn").disabled = false;
+      }
+    }
+
+    function renderResults(data) {
+      const { results, timestamp, roll } = data;
+
+      document.getElementById("outputMeta").textContent =
+        `Roll No: ${roll} · ${timestamp} · ${results.length} attempt${results.length !== 1 ? "s" : ""}`;
+
+      // Stats
+      const counts = { SUCCESS: 0, FAILED: 0, LOCKED: 0, "INVALID FORMAT": 0 };
+      results.forEach(r => { counts[r.status] = (counts[r.status] || 0) + 1; });
+      const statsBar = document.getElementById("statsBar");
+      statsBar.innerHTML = Object.entries(counts).map(([k, v]) =>
+        `<div class="stat-chip stat-${k.replace(" ", "-")}">
+          <span class="stat-label">${k}</span>
+          <span class="stat-count">${v}</span>
+        </div>`
+      ).join("");
+
+      // Table rows
+      const tbody = document.getElementById("resultsBody");
+      tbody.innerHTML = results.map((r, i) => `
+        <tr class="status-${r.status.replace(" ", "-")}">
+          <td class="row-num">${i + 1}</td>
+          <td class="col-user">${esc(r.username) || '<em class="dim">(empty)</em>'}</td>
+          <td class="col-pass">${esc(r.password) || '<em class="dim">(empty)</em>'}</td>
+          <td><span class="badge badge-${r.status.replace(" ", "-")}">${r.status}</span></td>
+        </tr>`
+      ).join("");
+
+      document.getElementById("outputSection").style.display = "block";
+      document.getElementById("outputSection").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function showError(msg) {
+      const el = document.getElementById("errorMsg");
+      el.textContent = msg;
+      el.style.display = "block";
+    }
+
+    function esc(s) {
+      return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+  </script>
+</body>
+</html>
