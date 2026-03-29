@@ -24,6 +24,14 @@ Key capabilities:
 
 ---
 
+## Screenshots
+
+| Home Page | Results | Simulator |
+|-----------|---------|-----------|
+| [![Home Page](https://github.com/jejo205713/hacker-skct-727823tucy019/blob/main/screenshots/Home-page.png)](https://github.com/jejo205713/hacker-skct-727823tucy019/blob/main/screenshots/Home-page.png) | [![Results](https://github.com/jejo205713/hacker-skct-727823tucy019/blob/main/screenshots/Results.png)](https://github.com/jejo205713/hacker-skct-727823tucy019/blob/main/screenshots/Results.png) | [![Simulator](https://github.com/jejo205713/hacker-skct-727823tucy019/blob/main/screenshots/cred-stuff-simulator.png)](https://github.com/jejo205713/hacker-skct-727823tucy019/blob/main/screenshots/cred-stuff-simulator.png) |
+
+---
+
 ## Project Structure
 
 ```
